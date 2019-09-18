@@ -78,36 +78,33 @@ public class PollDisplayPanel extends JPanel
   private void drawPieChart(Graphics g, int x, int y, int r)
   {
     int total = count1 + count2 + count3;
-    int fromDegree1 = 0;
-    int fromDegree2 = 0;
-    int fromDegree3 = 0;
+    int fromDegree = 0;
+    int degrees1;
+    int degrees2;
+    int degrees3;
 
     if (total > 0)
     {
-      int degrees1;
       g.setColor(Color.RED);
       degrees1 = countToDegrees(count1, total);
-      drawSector(g, x, y, r, fromDegree1, degrees1);
+      System.out.println(degrees1);
+      drawSector(g, x, y, r, fromDegree, degrees1);
+      fromDegree = fromDegree + degrees1;
 
-      int degrees2;
+
       g.setColor(Color.GREEN);
       degrees2 = countToDegrees(count2, total);
-      fromDegree2 = degrees1;
-      drawSector(g, x, y, r, fromDegree2, degrees2);
+      drawSector(g, x, y, r, fromDegree, degrees2);
+      fromDegree = fromDegree + degrees2;
 
-      int degrees3;
-      g.setColor(Color.BLUE);
-      degrees3 = countToDegrees(count3, total);
-//      fromDegree3 = ;
-      drawSector(g, x, y, r, fromDegree3, degrees3);
-//      _________________________________________________
-//
-//      ...
+      //g.setColor(Color.BLUE);
+
+      //drawSector(g, x, y, r, fromDegree, degrees);
     }
     else
     {
       g.setColor(Color.LIGHT_GRAY);
-      drawSector(g, x, y, r, 0, 360);
+      drawSector(g, x, y, r, fromDegree, 360);
     }
   }
 
